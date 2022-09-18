@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+
+set(BLUSEIO_VERSION "@bluseio_VERSION@")
+set_and_check(BLUSEIO_INCLUDE_DIR "@PACKAGE_CONFIG_INC_DIR@")
+set_and_check(BLUSEIO_LIB_DIR "@PACKAGE_CONFIG_LIB_DIR@")
+
+if (EXISTS "${CMAKE_CURRENT_LIST_DIR}/bluseio-targets.cmake")
+    include ("${CMAKE_CURRENT_LIST_DIR}/bluseio-targets.cmake")
+endif ()
+
+check_required_components(bluseio)
