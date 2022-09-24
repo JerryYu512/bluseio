@@ -102,7 +102,7 @@ void uuid_generate(char s[37])
 	if (fp)
 	{
 		s[36] = '0';
-		fread(s, 1, 36, fp);
+		if (fread(s, 1, 36, fp)) {}
 		fclose(fp);
 	}
 	else

@@ -1,0 +1,3 @@
+[submodule "thd/libhv"]
+	path = thd/libhv
+	url = https://github.com/ithewei/libhv

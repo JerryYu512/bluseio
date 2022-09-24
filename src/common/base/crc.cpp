@@ -46,8 +46,8 @@ static unsigned int crc32table[256] = {
 	0x6D66B4BC, 0xDA7B75B8, 0x035D36B5, 0xB440F7B1
 };
 
-static unsigned int crc32msbtable[256];
-static unsigned int crc32lsbtable[256];
+// static unsigned int crc32msbtable[256];
+// static unsigned int crc32lsbtable[256];
 
 typedef struct _crc_polynomial_t
 {
@@ -103,7 +103,7 @@ uint32_t crc32(uint32_t crc, const uint8_t *buffer, uint32_t size) {
 	uint32_t i = 0;
 
 	for (i = 0; i < size; i++) {
-		crc = crc32msbtable[((crc>>24) ^ buffer[i]) & 0xff] ^ (crc << 8);  
+		crc = crc32table[((crc>>24) ^ buffer[i]) & 0xff] ^ (crc << 8);  
 	}  
 	return crc ;  
 }
