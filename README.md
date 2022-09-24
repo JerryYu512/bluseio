@@ -1,5 +1,3 @@
-# 消息队列
+# 基础开发库
 
-使用与嵌入式的轻量级消息队列。
-
-依赖于openssl，workflow
+依赖于openssl，libhv
