@@ -25,8 +25,8 @@ endmacro()
 ####################################################################################
 
 set(BLUSEIO_VERSION "1.0.0")
-set_and_check(BLUSEIO_INCLUDE_DIR "/home/jerry/work/project/cpp/bluseio/_include")
-set_and_check(BLUSEIO_LIB_DIR "/home/jerry/work/project/cpp/bluseio/_lib")
+set_and_check(BLUSEIO_INCLUDE_DIR "/home/astr/work/github/project/dev/bluseio/_include")
+set_and_check(BLUSEIO_LIB_DIR "/home/astr/work/github/project/dev/bluseio/_lib")
 
 if (EXISTS "${CMAKE_CURRENT_LIST_DIR}/bluseio-targets.cmake")
     include ("${CMAKE_CURRENT_LIST_DIR}/bluseio-targets.cmake")

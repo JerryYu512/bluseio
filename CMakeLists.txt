@@ -54,23 +54,39 @@ add_custom_target(
 
 INCLUDE(CMakeLists_Headers.txt)
 
-macro(makeLink src dest target)
-	add_custom_command(
-		TARGET ${target} PRE_BUILD
-		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${src} ${dest}
-		DEPENDS ${dest}
-	)
-endmacro()
+# macro(makeLink src dest target)
+# 	add_custom_command(
+# 		TARGET ${target} PRE_BUILD
+# 		COMMAND ${CMAKE_COMMAND} -E copy_if_different ${src} ${dest}
+# 		DEPENDS ${dest}
+# 	)
+# endmacro()
 
-add_custom_command(
-	TARGET LINK_HEADERS PRE_BUILD
-	COMMAND ${CMAKE_COMMAND} -E make_directory ${INC_DIR}/${PROJECT_NAME}
-)
+# add_custom_command(
+# 	TARGET LINK_HEADERS PRE_BUILD
+# 	COMMAND ${CMAKE_COMMAND} -E make_directory ${INC_DIR}/${PROJECT_NAME}
+# )
+
+macro(makeLink src dest dstpath)
+	file(MAKE_DIRECTORY ${dstpath})
+	file(COPY ${src} DESTINATION ${dest})
+	# COMMAND ${CMAKE_COMMAND} -E make_directory ${dstpath}
+	# COMMAND ${CMAKE_COMMAND} -E copy_if_different ${src} ${dest}
+endmacro()
 
 foreach(header_file ${INCLUDE_HEADERS})
 	string(REPLACE "/" ";" arr ${header_file})
-	list(GET arr -1 file_name)
-	makeLink(${PROJECT_SOURCE_DIR}/${header_file} ${INC_DIR}/${PROJECT_NAME}/${file_name} LINK_HEADERS)
+	list (LENGTH arr length)
+	list(SUBLIST arr 1 -1 file_name)
+	math(EXPR length "${length} - 2")
+	list(SUBLIST arr 1 ${length} file_path)
+	list(JOIN file_name / file_name)
+	list(JOIN file_path / file_path)
+	file(MAKE_DIRECTORY ${INC_DIR}/${PROJECT_NAME}/${file_path})
+	file(COPY ${PROJECT_SOURCE_DIR}/${header_file} DESTINATION ${INC_DIR}/${PROJECT_NAME}/${file_path})
+	# list(GET arr -1 file_name)
+	# makeLink(${PROJECT_SOURCE_DIR}/${header_file} ${INC_DIR}/${PROJECT_NAME}/${file_name} LINK_HEADERS)
+	# makeLink(${PROJECT_SOURCE_DIR}/${header_file} ${INC_DIR}/${PROJECT_NAME}/${file_name} ${INC_DIR}/${PROJECT_NAME}/${file_path})
 endforeach()
 
 # 标准

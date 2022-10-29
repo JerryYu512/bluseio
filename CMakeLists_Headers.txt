@@ -2,4 +2,30 @@ cmake_minimum_required(VERSION 3.6)
 
 set(INCLUDE_HEADERS
 	src/common/base/any.h
+	src/common/base/block_queue.h
+	src/common/base/bloom_filter.h
+	src/common/base/circular_buffer.h
+	src/common/base/copyable.h
+	src/common/base/coredump.h
+	src/common/base/crc.h
+	src/common/base/def.h
+	src/common/base/extend_time.h
+	src/common/base/iso8601.h
+	src/common/base/list.h
+	src/common/base/make.h
+	src/common/base/min_top_heap.h
+	src/common/base/murmur_hash.h
+	src/common/base/noncopyable.h
+	src/common/base/os.h
+	src/common/base/pugiconfig.hpp
+	src/common/base/pugixml.h
+	src/common/base/pystring.h
+	src/common/base/random.h
+	src/common/base/slab.h
+	src/common/base/typedef.h
+	src/common/base/types.h
+	src/common/base/uuid.h
+	src/common/base/weak_callback.h
+	src/common/ecode/ecode_def.h
+	src/common/tools/tabulate.hpp
 )
