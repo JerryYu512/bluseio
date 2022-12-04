@@ -31,8 +31,10 @@
 *.out
 *.app
 build
+include
 _include
 _lib
+install
 nanomq
-biomq-config.cmake
+config.cmake
 configure.h

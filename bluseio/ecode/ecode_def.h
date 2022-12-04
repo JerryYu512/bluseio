@@ -88,6 +88,7 @@ typedef struct: bio_err_t {
 /////////////////////////////////////////////
 // http 1-600
 #define ECODE_NET_HTTP(code) ECODE_NET_GEN(0x0001 | (code))
+#define ECODE_NET_MQ(code) ECODE_NET_GEN(0x1001 | (code))
 
 // 错误码，此处收集已经在使用的错误码，如果使用者需要自己单独定义错误码，则不使用下放的定义与接口
 #define ECODE_MAP(XX) \
@@ -143,6 +144,10 @@ typedef struct: bio_err_t {
 	/* 设备错误码0x30000-0x3ffff */ \
 	/* 媒体错误码0x30000-0x3ffff */ \
 	/* 网络错误码0x30000-0x3ffff */ \
+	XX(BIO_NET_ECODE_MQ_NODE_OVERMAX = ECODE_NET_MQ(0x0001), BIO_NET_ECODE_MQ_NODE_OVERMAX, "Upgrade protocol is not compatible", "节点已满") \
+	XX(BIO_NET_ECODE_MQ_NODE_EXISTED, BIO_NET_ECODE_MQ_NODE_EXISTED, "Upgrade protocol is not compatible", "节点已存在") \
+	XX(BIO_NET_ECODE_MQ_NODE_LITSEN, BIO_NET_ECODE_MQ_NODE_LITSEN, "Upgrade protocol is not compatible", "节点监听") \
+	XX(BIO_NET_ECODE_MQ_URL_INVALID, BIO_NET_ECODE_MQ_URL_INVALID, "Upgrade protocol is not compatible", "url非法") \
 	/* 存储错误码0x30000-0x3ffff */ \
 
 // 错误码定义

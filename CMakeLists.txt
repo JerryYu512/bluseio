@@ -41,7 +41,7 @@ include(GNUInstallDirs)
 
 set(CMAKE_CONFIG_INSTALL_FILE ${PROJECT_BINARY_DIR}/config.toinstall.cmake)
 set(CMAKE_CONFIG_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
-set(INC_DIR ${PROJECT_SOURCE_DIR}/_include CACHE PATH "bluseio inc")
+set(INC_DIR ${PROJECT_SOURCE_DIR}/include CACHE PATH "bluseio inc")
 set(LIB_DIR ${PROJECT_SOURCE_DIR}/_lib CACHE PATH "bluseio lib")
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIB_DIR})
@@ -153,12 +153,12 @@ message(STATUS "compile uuid:BLUSEIO_UUID=${BLUSEIO_UUID}")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configure.h.in ${CMAKE_CURRENT_SOURCE_DIR}/configure.h)
 
 set(INCDIR include)
-set(SRCDIR src)
+set(SRCDIR bluseio)
 set(LIBDIR lib)
 set(BINDIR bin)
 
 # 头文件目录
-set(INCDIRS . include src)
+set(INCDIRS . include bluseio)
 
 include_directories(${INCDIRS} ${SRCDIR})
 
@@ -204,9 +204,12 @@ function(redefine_file_macro targetname)
 endfunction()
 
 # 库源码目录，越底层的放在越后
-set(PROJ_SRCDIRS ${PROJ_SRCDIRS} src/component)
-set(PROJ_SRCDIRS ${PROJ_SRCDIRS} src/common)
-set(PROJ_SRCDIRS ${PROJ_SRCDIRS} src/common/base)
+set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/module)
+set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio)
+set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/tools)
+set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/utility)
+set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/ecode)
+set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/base)
 
 # 查找源码
 list_source_directories(PROJ_SRCS ${PROJ_SRCDIRS})
