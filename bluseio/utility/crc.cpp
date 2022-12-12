@@ -1,5 +1,7 @@
 #include "crc.h"
 
+namespace bluseio {
+namespace utility {
 static unsigned int crc32table[256] = {
 	0x00000000, 0xB71DC104, 0x6E3B8209, 0xD926430D, 0xDC760413, 0x6B6BC517,
 	0xB24D861A, 0x0550471E, 0xB8ED0826, 0x0FF0C922, 0xD6D68A2F, 0x61CB4B2B,
@@ -106,4 +108,7 @@ uint32_t crc32(uint32_t crc, const uint8_t *buffer, uint32_t size) {
 		crc = crc32table[((crc>>24) ^ buffer[i]) & 0xff] ^ (crc << 8);  
 	}  
 	return crc ;  
+}
+
+}
 }

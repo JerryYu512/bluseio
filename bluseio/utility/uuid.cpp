@@ -8,6 +8,7 @@
 #include <unistd.h> // access
 
 namespace blsueio {
+namespace utility {
 // https://en.wikipedia.org/wiki/Universally_unique_identifier
 struct uuid_t
 {
@@ -112,4 +113,5 @@ void uuid_generate(char s[37])
 	}
 }
 
+}
 }

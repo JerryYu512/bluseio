@@ -3,6 +3,7 @@
 #include <stddef.h>
 
 namespace bluseio {
+namespace base {
 
 /**
  * @brief 最大最小值
@@ -53,4 +54,5 @@ typedef struct {
 	uint64_t content_len;
 } fixed_header_t;
 
+} // namespace base
 } // namespace bluseio

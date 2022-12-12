@@ -54,6 +54,7 @@ struct slab_pool_s {
 };
 
 namespace bluseio {
+namespace utility {
 
 #define NCX_SLAB_PAGE_MASK 3
 #define NCX_SLAB_PAGE 0
@@ -852,7 +853,8 @@ void MemorySlab::stat(slab_stat_t &st) { impl_->stat(st); }
 
 void *MemorySlab::address(void) { return impl_->address(); }
 
-} // namespace hv
+}
+} // namespace bluseio
 
 using namespace bluseio;
 

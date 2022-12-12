@@ -38,6 +38,8 @@
 #include <hv/hlog.h>
 
 namespace blsueio {
+namespace utility {
+
 struct bloom_t {
     size_t asize;         ///< 位空间大小(位的容量，而不是内存容量)
     size_t nfuncs;        ///< 哈希函数数量
@@ -173,4 +175,5 @@ int bloom_check(struct bloom_t *bloom, const void *key, size_t len) {
     return 1;
 }
 
+}
 }

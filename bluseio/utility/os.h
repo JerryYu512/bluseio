@@ -30,6 +30,7 @@
 #include <stddef.h>
 
 namespace blsueio {
+namespace utility {
 
 // 设置系统调用system函数调用接口，默认system
 void set_default_system_call(int (*fun)(const char *));
@@ -117,4 +118,5 @@ char* env(const char* name, char* buf, size_t len);
  */
 void daemon(void);
 
+}
 }

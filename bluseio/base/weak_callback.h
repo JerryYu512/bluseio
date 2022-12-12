@@ -32,6 +32,7 @@
 #include <memory>
 
 namespace bluseio {
+namespace base {
 
 // A barely usable WeakCallback
 
@@ -72,4 +73,5 @@ WeakCallback<CLASS, ARGS...> makeWeakCallback(const std::shared_ptr<CLASS>& obje
     return WeakCallback<CLASS, ARGS...>(object, function);
 }
 
+}  // namespace base
 }  // namespace bluseio

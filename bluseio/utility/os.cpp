@@ -44,6 +44,8 @@
 #endif
 
 namespace blsueio {
+namespace utility {
+
 static struct utsname t_info;
 static hatomic_flag_t flag = HATOMIC_FLAG_INIT;
 
@@ -138,4 +140,5 @@ void daemon(void) {
     // (void)r;
 }
 
+}
 }

@@ -32,6 +32,7 @@
 #include <stdint.h>
 
 namespace blsueio {
+namespace utility {
 /**
  * @brief 
  * @param key 
@@ -95,4 +96,5 @@ uint64_t bl_sax_hash(const void *key, size_t len);
  */
 uint64_t bl_sdbm_hash(const void *key, size_t len);
 
+}
 }

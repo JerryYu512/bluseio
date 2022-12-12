@@ -5,6 +5,8 @@
 #include <stddef.h>
 
 namespace blsueio {
+namespace utility {
+
 typedef struct random_s {
 	uint32_t seed;
 } random_t;
@@ -23,5 +25,6 @@ static inline uint32_t random(random_t *seed) {
 	return seed->seed;
 }
 
+}
 }
 #endif // BLUSEIO_RANDOM_H_

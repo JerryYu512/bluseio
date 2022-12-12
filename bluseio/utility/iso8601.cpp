@@ -3,6 +3,7 @@
 #include <hv/htime.h>
 
 namespace bluseio {
+namespace utility {
 
 #define EPOCH INT64_C(62135683200)  /* 1970-01-01T00:00:00 */
 #define RDN_OFFSET INT64_C(62135683200)  /* 1970-01-01T00:00:00 */
@@ -290,4 +291,5 @@ time_t iso8601_mktime(iso8601_t* t, bool local) {
     return mktime(&tmp);
 }
 	
+}
 } // namespace bluseio

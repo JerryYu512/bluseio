@@ -37,6 +37,7 @@
 #include <vector>
 
 namespace bluseio {
+namespace utility {
 
 /**
  * @brief 一个泛型的小顶堆类
@@ -171,4 +172,5 @@ private:
     std::vector<K> *heap_;
 };
 
+}
 }  // namespace bluseio

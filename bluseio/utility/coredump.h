@@ -31,6 +31,8 @@
 #include <stdbool.h>
 
 namespace blsueio {
+namespace utility {
+
 /**
  * @brief Set the up coredump object
  *
@@ -41,4 +43,5 @@ namespace blsueio {
  */
 bool setup_coredump(const char *path_dir, size_t core_size);
 
+}
 }

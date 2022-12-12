@@ -30,6 +30,8 @@
 
 namespace bluseio {
 
+namespace base {
+
 class noncopyable {
 protected:
     noncopyable(void) = default;
@@ -39,4 +41,5 @@ public:
     noncopyable& operator=(const noncopyable&) = delete;
 };
 
+} // namespace base
 } // namespace bluseio

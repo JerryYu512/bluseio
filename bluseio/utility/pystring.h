@@ -39,6 +39,7 @@
 #include <map>
 
 namespace bluseio {
+namespace utility {
 
 /// 留白字符
 #define BLUSEIO_SPACE_CHARS     " \t\r\n"
@@ -47,6 +48,7 @@ namespace bluseio {
 
 typedef std::map<std::string, std::string> KeyValue;
 
+}
 } // namespace bluseio
 
 namespace pystring
@@ -255,7 +257,7 @@ namespace pystring
     void splitlines(  const std::string & str, std::vector< std::string > & result, bool keepends = false );
 
     // user=amdin&pswd=123456
-    bluseio::KeyValue splitKV(const std::string& str, char kv_kv = '&', char k_v = '=');
+    bluseio::utility::KeyValue splitKV(const std::string& str, char kv_kv = '&', char k_v = '=');
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     /// @brief Return True if string starts with the prefix, otherwise return False. With optional start,

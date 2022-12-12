@@ -58,6 +58,7 @@ void* bluseio_slab_addr(bluseio_slab_t* slab);
 #ifdef __cplusplus
 
 namespace bluseio {
+namespace utility {
 
 class MemorySlabImpl;
 
@@ -76,6 +77,7 @@ private:
     MemorySlabImpl *impl_;
 };
 
+}
 }
 
 #endif

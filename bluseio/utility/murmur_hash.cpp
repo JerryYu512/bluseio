@@ -1,6 +1,7 @@
 #include "murmur_hash.h"
 
 namespace blsueio {
+namespace utility {
 uint32_t murmur_hash32(const void* key, size_t len, uint32_t seed) {
 // 'm' and 'r' are mixing constants generated offline.
     // They're not really 'magic', they just happen to work well.
@@ -87,5 +88,6 @@ uint64_t murmur_hash64(const void* key, size_t len, uint64_t seed) {
     h ^= h >> r;
 
     return h;
+}
 }
 }

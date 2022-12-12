@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 namespace bluseio {
+namespace utility {
 
 char* datetime_fmt_fs(datetime_t* dt, char* buf) {
     sprintf(buf, DATETIME_FMT_FS,
@@ -10,4 +11,5 @@ char* datetime_fmt_fs(datetime_t* dt, char* buf) {
     return buf;
 }
 	
+}
 } // namespace bluseio

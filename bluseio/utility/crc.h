@@ -8,6 +8,7 @@
 #include <string>
 
 namespace bluseio {
+namespace utility {
 
 static inline uint32_t crc_simple(uint8_t *data, size_t len)
 {
@@ -47,6 +48,7 @@ inline uint16_t crc16(const S& s) {
 #define bluseio_crc32_final(crc) crc ^= 0xffffffff
 uint32_t crc32(uint32_t crc, const uint8_t *buffer, uint32_t size);
 
+}
 }
 
 #endif // BLUSEIO_CRC_H_

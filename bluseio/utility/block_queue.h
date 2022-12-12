@@ -34,6 +34,7 @@
 #include <condition_variable>
 
 namespace bluseio {
+namespace utiliity {
 
 /**
  * @brief 任务队列
@@ -106,4 +107,5 @@ private:
     bool stop_;                          ///< 退出条件
 };
 
+}
 } // namespace bluseio

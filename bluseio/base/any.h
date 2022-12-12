@@ -35,6 +35,7 @@
 
 namespace bluseio {
 
+namespace base {
 // https://www.cnblogs.com/qicosmos/p/3420095.html
 
 struct Any {
@@ -104,4 +105,5 @@ private:
     std::type_index m_tpIndex;
 };
 
+}  // namespace base
 }  // namespace bluseio

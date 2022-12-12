@@ -38,6 +38,7 @@
 #include "any.h"
 
 namespace bluseio {
+namespace base {
 
 // Taken from google-protobuf stubs/common.h
 //
@@ -133,4 +134,5 @@ inline To down_cast(From* f)           // so we only accept pointers
     return static_cast<To>(f);
 }
 
+}  // namespace base
 }  // namespace bluseio

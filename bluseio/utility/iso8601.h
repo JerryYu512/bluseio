@@ -3,6 +3,7 @@
 #include <time.h>
 
 namespace bluseio {
+namespace utility {
 
 typedef struct iso8601_s {
     int64_t sec;    /* Number of seconds since the epoch of 1970-01-01T00:00:00Z */
@@ -15,4 +16,5 @@ iso8601_t* iso8601_parse(iso8601_t* t, char* buf);
 char* iso8601_format(iso8601_t* t, char* buf, int len, int precision);
 time_t iso8601_mktime(iso8601_t* t, bool local);
 	
+}
 } // namespace bluseio

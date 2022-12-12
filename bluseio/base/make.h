@@ -31,6 +31,7 @@
 #include <utility>
 
 namespace bluseio {
+namespace base {
 
 template <template <typename...> class Ret, typename... T>
 using return_t = Ret<typename std::decay<T>::type...>;
@@ -40,4 +41,5 @@ inline return_t<Ret, T...> make(T&&... args) {
     return return_t<Ret, T...>(std::forward<T>(args)...);
 }
 
+} // namespace base
 } // namespace bluseio

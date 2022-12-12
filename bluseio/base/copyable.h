@@ -29,6 +29,7 @@
 #pragma once
 
 namespace bluseio {
+namespace base {
 
 /// A tag class emphasises the objects are copyable.
 /// The empty base class optimization applies.
@@ -39,4 +40,5 @@ protected:
     ~copyable() = default;
 };
 
+}  // namespace base
 }  // namespace bluseio

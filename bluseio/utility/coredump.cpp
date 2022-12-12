@@ -38,6 +38,8 @@
 #include "./os.h"
 
 namespace blsueio {
+namespace utility {
+
 static const char *const core_format = "core-%e-%p-%t";
 
 bool setup_coredump(const char *path_dir, size_t core_size) {
@@ -78,4 +80,5 @@ bool setup_coredump(const char *path_dir, size_t core_size) {
     return true;
 }
 
+}
 }
