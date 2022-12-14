@@ -31,7 +31,7 @@
 #include <map>
 #include <iostream>
 #include <iomanip>
-#include "basic/if/tabulate.hpp"
+#include <bluseio/tools/tabulate.hpp>
 
 namespace bluseio
 {

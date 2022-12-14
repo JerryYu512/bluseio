@@ -26,7 +26,7 @@ typedef uint64_t bio_err_t;
  * @brief 基础错误码ID
  * 
  */
-typedef struct: bio_err_t {
+typedef enum: bio_err_t {
 	ECODE_BASE_NONE = 0,
 	ECODE_BASE_SYSTEM,
 	ECODE_BASE_SUB_SYSTEM,
@@ -44,7 +44,7 @@ typedef struct: bio_err_t {
  * @brief 错误码主模块起始值
  * 
  */
-typedef struct: bio_err_t {
+typedef enum: bio_err_t {
 	ECODE_OK 			= 0,
 	// SYSTEM之前的为通用错误码
 	ECODE_SYSTEM 		= ECODE_BASE_ID_START(ECODE_BASE_SYSTEM),		///< 系统错误码
@@ -114,7 +114,7 @@ typedef struct: bio_err_t {
 	XX(BIO_COMMON_ECODE_MAX = 0xffff, BIO_COMMON_ECODE_MAX, "invalid common code", "无效的通用错误码") \
 	/* 系统错误码0x10000-0x1ffff */ \
 	/* 配置文件 */ \
-	XX(BIO_SYS_ECODE_CFG_FILE_NOT_EXIST = ECODE_SYSTEM_CFGFILE(0x0001), BOT_SYS_ECODE_CFG_FILE_NOT_EXIST, "configure file not exist", "配置文件不存在") \
+	XX(BIO_SYS_ECODE_CFG_FILE_NOT_EXIST = ECODE_SYSTEM_CFGFILE(0x0001), BIO_SYS_ECODE_CFG_FILE_NOT_EXIST, "configure file not exist", "配置文件不存在") \
 	XX(BIO_SYS_ECODE_CFG_FILE_OPEN_FAILED, BIO_SYS_ECODE_CFG_FILE_OPEN_FAILED, "configure file open error", "配置文件打开错误") \
 	XX(BIO_SYS_ECODE_CFG_FILE_HEADER_ERROR, BIO_SYS_ECODE_CFG_FILE_HEADER_ERROR, "configure file header error", "配置文件头错误") \
 	XX(BIO_SYS_ECODE_CFG_FILE_HEADER_CHECK_FAILED, BIO_SYS_ECODE_CFG_FILE_HEADER_CHECK_FAILED, "configure file header check error", "配置文件头校验失败") \

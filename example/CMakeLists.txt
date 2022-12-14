@@ -25,7 +25,7 @@ set(EXAMPLE_LIST
 	main
 )
 
-set(BLUSEIO_LIB bluseio libhv pthread OpenSSL::SSL OpenSSL::Crypto ${LIBRT})
+set(BLUSEIO_LIB bluseio hv pthread OpenSSL::SSL OpenSSL::Crypto ${LIBRT})
 
 foreach(src ${EXAMPLE_LIST})
 	string(REPLACE "-" ";" arr ${src})

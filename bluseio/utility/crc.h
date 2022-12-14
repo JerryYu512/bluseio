@@ -32,7 +32,7 @@ static inline uint32_t crc_simple(uint8_t *data, size_t len)
 uint16_t crc16(const void* s, size_t n, uint16_t crc);
 
 static inline uint16_t crc16(const void* s, size_t n) {
-    return bluseio::crc16(s, n, 0);
+    return bluseio::utility::crc16(s, n, 0);
 }
 
 static inline uint16_t crc16(const char* s) {

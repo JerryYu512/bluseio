@@ -26,7 +26,7 @@
  * @copyright MIT License
  * 
  */
-#include "def.h"
+#include <bluseio/base/def.h>
 #include "slab.h"
 #include <string.h>
 #include <unistd.h>
@@ -856,7 +856,7 @@ void *MemorySlab::address(void) { return impl_->address(); }
 }
 } // namespace bluseio
 
-using namespace bluseio;
+using namespace bluseio::utility;
 
 bluseio_slab_t* bluseio_slab_init(void* addr, size_t len) {
     return (bluseio_slab_t*)(new MemorySlab(addr, len));

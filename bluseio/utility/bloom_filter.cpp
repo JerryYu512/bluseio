@@ -33,7 +33,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "def.h"
+#include <bluseio/base/def.h>
 #include <hv/hbase.h>
 #include <hv/hlog.h>
 
