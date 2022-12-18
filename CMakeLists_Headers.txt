@@ -2,13 +2,11 @@ cmake_minimum_required(VERSION 3.6)
 
 set(INCLUDE_HEADERS
 	bluseio/base/any.h
+	bluseio/base/singleton.h
 	bluseio/base/copyable.h
 	bluseio/base/def.h
-	bluseio/base/make.h
 	bluseio/base/noncopyable.h
 	bluseio/base/typedef.h
-	bluseio/base/types.h
-	bluseio/base/weak_callback.h
 	bluseio/ecode/ecode_def.h
 	bluseio/utility/block_queue.h
 	bluseio/utility/bloom_filter.h
