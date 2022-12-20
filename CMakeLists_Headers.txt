@@ -8,13 +8,12 @@ set(INCLUDE_HEADERS
 	bluseio/base/noncopyable.h
 	bluseio/base/typedef.h
 	bluseio/ecode/ecode_def.h
+	bluseio/ecode/ecode.h
 	bluseio/utility/block_queue.h
 	bluseio/utility/bloom_filter.h
 	bluseio/utility/circular_buffer.h
 	bluseio/utility/coredump.h
 	bluseio/utility/crc.h
-	bluseio/utility/extend_time.h
-	bluseio/utility/iso8601.h
 	bluseio/utility/list.h
 	bluseio/utility/min_top_heap.h
 	bluseio/utility/murmur_hash.h
@@ -25,5 +24,6 @@ set(INCLUDE_HEADERS
 	bluseio/utility/random.h
 	bluseio/utility/slab.h
 	bluseio/utility/uuid.h
+	bluseio/utility/datetime.h
 	bluseio/tools/tabulate.hpp
 )

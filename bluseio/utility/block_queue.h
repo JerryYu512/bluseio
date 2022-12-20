@@ -34,7 +34,7 @@
 #include <condition_variable>
 
 namespace bluseio {
-namespace utiliity {
+namespace utility {
 
 /**
  * @brief 任务队列

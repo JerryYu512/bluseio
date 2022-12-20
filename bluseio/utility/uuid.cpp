@@ -1,4 +1,3 @@
-#include <hv/hplatform.h>
 #include "uuid.h"
 
 #include <stdio.h>
@@ -7,7 +6,7 @@
 #include <time.h>
 #include <unistd.h> // access
 
-namespace blsueio {
+namespace bluseio {
 namespace utility {
 // https://en.wikipedia.org/wiki/Universally_unique_identifier
 struct uuid_t
@@ -97,20 +96,7 @@ void uuid_generate_simple(char s[37])
 
 void uuid_generate(char s[37])
 {
-#ifdef OS_LINUX
-	FILE* fp;
-	fp = fopen("/proc/sys/kernel/random/uuid", "r");
-	if (fp)
-	{
-		s[36] = '0';
-		if (fread(s, 1, 36, fp)) {}
-		fclose(fp);
-	}
-	else
-#endif
-	{
-		uuid_generate_simple(s);
-	}
+	uuid_generate_simple(s);
 }
 
 }

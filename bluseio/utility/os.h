@@ -29,7 +29,7 @@
 #pragma once
 #include <stddef.h>
 
-namespace blsueio {
+namespace bluseio {
 namespace utility {
 
 // 设置系统调用system函数调用接口，默认system

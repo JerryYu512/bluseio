@@ -26,7 +26,7 @@
  * @copyright MIT License
  *
  */
-#include "ecode_def.h"
+#include "ecode.h"
 
 #include <map>
 #include <iostream>
@@ -47,6 +47,8 @@ static std::map<BioErrorCode, ErrorStr> error_code_map = {
 	ECODE_MAP(BIO_ERROR_CODE_MAP_TO_RECORD)
 #undef BIO_ERROR_CODE_MAP_TO_RECORD
 };
+
+__thread BioErrorCode BioEcode::code_ = BIO_ECODE_OK;
 
 const char *query_error_code_zh(BioErrorCode no)
 {

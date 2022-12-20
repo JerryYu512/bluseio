@@ -43,7 +43,7 @@
 #include <sys/sysctl.h>
 #endif
 
-namespace blsueio {
+namespace bluseio {
 namespace utility {
 
 static struct utsname t_info;

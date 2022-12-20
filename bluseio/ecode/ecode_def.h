@@ -144,6 +144,15 @@ typedef enum: bio_err_t {
 	/* 设备错误码0x30000-0x3ffff */ \
 	/* 媒体错误码0x30000-0x3ffff */ \
 	/* 网络错误码0x30000-0x3ffff */ \
+	XX(BIO_NET_ECODE_HTTP_CONTINUE = ECODE_NET_HTTP(100), BIO_NET_ECODE_HTTP_CONTINUE, "Continue", "继续") \
+	XX(BIO_NET_ECODE_HTTP_SP = ECODE_NET_HTTP(101), BIO_NET_ECODE_HTTP_CONTINUE, "Switching Protocols", "切换协议") \
+	XX(BIO_NET_ECODE_HTTP_OK = ECODE_NET_HTTP(200), BIO_NET_ECODE_HTTP_OK, "OK", "请求成功") \
+	XX(BIO_NET_ECODE_HTTP_CREATED = ECODE_NET_HTTP(201), BIO_NET_ECODE_HTTP_CREATED, "Created", "已创建") \
+	XX(BIO_NET_ECODE_HTTP_ACCEPTED = ECODE_NET_HTTP(202), BIO_NET_ECODE_HTTP_ACCEPTED, "Accepted", "已接受") \
+	XX(BIO_NET_ECODE_HTTP_NON_AUTH_INFO = ECODE_NET_HTTP(203), BIO_NET_ECODE_HTTP_NON_AUTH_INFO, "Non-Authoritative Information", "非授权信息") \
+	XX(BIO_NET_ECODE_HTTP_NO_CONTENT = ECODE_NET_HTTP(204), BIO_NET_ECODE_HTTP_NO_CONTENT, "No Content", "无内容") \
+	XX(BIO_NET_ECODE_HTTP_RESET_CONTENT = ECODE_NET_HTTP(205), BIO_NET_ECODE_HTTP_RESET_CONTENT, "Reset Content", "重置内容") \
+	XX(BIO_NET_ECODE_HTTP_PARTIAL_CONTENT = ECODE_NET_HTTP(206), BIO_NET_ECODE_HTTP_PARTIAL_CONTENT, "Partial Content", "部分内容") \
 	XX(BIO_NET_ECODE_MQ_NODE_OVERMAX = ECODE_NET_MQ(0x0001), BIO_NET_ECODE_MQ_NODE_OVERMAX, "Upgrade protocol is not compatible", "节点已满") \
 	XX(BIO_NET_ECODE_MQ_NODE_EXISTED, BIO_NET_ECODE_MQ_NODE_EXISTED, "Upgrade protocol is not compatible", "节点已存在") \
 	XX(BIO_NET_ECODE_MQ_NODE_LITSEN, BIO_NET_ECODE_MQ_NODE_LITSEN, "Upgrade protocol is not compatible", "节点监听") \
@@ -164,7 +173,7 @@ typedef enum BioErrorCodeE: bio_err_t {
  * @return const char* 
  */
 const char* query_error_code_zh(BioErrorCode no);
-static const char* query_error_code_zh(bio_err_t no) {
+__attribute_used__ static const char* query_error_code_zh(bio_err_t no) {
 	return query_error_code_zh((BioErrorCode)(no));
 }
 

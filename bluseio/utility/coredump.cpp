@@ -37,7 +37,7 @@
 
 #include "./os.h"
 
-namespace blsueio {
+namespace bluseio {
 namespace utility {
 
 static const char *const core_format = "core-%e-%p-%t";

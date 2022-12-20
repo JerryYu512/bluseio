@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-namespace blsueio {
+namespace bluseio {
 namespace utility {
 
 typedef struct random_s {

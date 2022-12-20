@@ -30,71 +30,100 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
+#include <vector>
+#include <functional>
+#include <bluseio/base/def.h>
 
-namespace blsueio {
+namespace bluseio {
 namespace utility {
-/**
- * @brief 
- * @param key 
- * @param len 
- * @return uint64_t hashֵ
- */
-typedef uint64_t (*bl_hash_fn_t)(const void *key, size_t len);
 
-/**
- * @brief 
- */
-struct bloom_t;
+using bloom_hash_fun_t = std::function<uint64_t(const void*key, size_t len)>;
 
-/**
- * @brief 
- * @param size 
- * @param nfuncs 
- * @param ... 
- * @return struct bloom_t* 
- */
-struct bloom_t *bloom_creat(size_t size, size_t nfuncs, ...);
+ __attribute_used__ static uint64_t bl_sax_hash(const void *key, size_t len) {
+    uint64_t h = 0;
+    unsigned char *ptr = (unsigned char *)key;
 
-/**
- * @brief 
- * @param bloom 
- * @return int 
- */
-int bloom_destroy(struct bloom_t **bloom);
+    while (len) {
+        h ^= (h << 5) + (h >> 2) + *ptr;
+        ptr++;
+        len--;
+    }
 
-/**
- * @brief 
- * @param bloom 
- * @param key 
- * @param len 
- * @return int 
- */
-int bloom_add(struct bloom_t *bloom, const void *key, size_t len);
+    return h;
+}
 
-/**
- * @brief 
- * @param bloom 
- * @param key 
- * @param len 
- * @return int 
- */
-int bloom_check(struct bloom_t *bloom, const void *key, size_t len);
+__attribute_used__ static uint64_t bl_sdbm_hash(const void *key, size_t len) {
+    uint64_t h = 0;
+    unsigned char *ptr = (unsigned char *)key;
 
-/**
- * @brief 
- * @param key 
- * @param len 
- * @return uint64_t hash
- */
-uint64_t bl_sax_hash(const void *key, size_t len);
+    while (len) {
+        h = *ptr + (h << 6) + (h << 16) - h;
+        ptr++;
+        len--;
+    }
 
-/**
- * @brief 
- * @param key 
- * @param len 
- * @return uint64_t hashֵ
- */
-uint64_t bl_sdbm_hash(const void *key, size_t len);
+    return h;
+}
+
+/// @brief 布隆过滤器
+/// @tparam size 布隆过滤器需要记录的数据量
+template <unsigned int size>
+class BloomFilter {
+public:
+	static_assert(size > 0);
+	BloomFilter(const std::vector<bloom_hash_fun_t>& funs = std::vector<bloom_hash_fun_t>()) {
+		static std::vector<bloom_hash_fun_t> def_hash_fun = {
+			bl_sax_hash,
+			bl_sdbm_hash,
+		};
+
+		if (hash_fun_.empty()) {
+			hash_fun_ = def_hash_fun;
+		}
+		::memset(map_, 0, sizeof(map_));
+	}
+
+	~BloomFilter() {}
+
+	/// @brief 添加记录
+	/// @param key 
+	/// @param len 
+	/// @return 
+	bool add(const void *key, size_t len) {
+		if (!key || !len) {
+			return false;
+		}
+
+		for (size_t n = 0; n < hash_fun_.size(); ++n) {
+			BITMAP_SET(map_, hash_fun_[n](key, len) % (sizeof(map_) * CHAR_BIT));
+		}
+
+		return true;
+	}
+
+	/// @brief 检查记录
+	/// @param key 
+	/// @param len 
+	/// @return 
+	bool check(const void *key, size_t len) {
+		if (!key || !len) {
+			return true;
+		}
+		for (size_t n = 0; n < hash_fun_.size(); ++n) {
+			// 只要有一个哈希函数标明未记录则标识未记录
+			if (!BITMAP_GET(map_, hash_fun_[n](key, len) % (sizeof(map_) * CHAR_BIT))) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+private:
+	char map_[NUM_ALIGN(size, CHAR_BIT)];
+	std::vector<bloom_hash_fun_t> hash_fun_;
+};
 
 }
 }

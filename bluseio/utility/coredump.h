@@ -30,7 +30,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-namespace blsueio {
+namespace bluseio {
 namespace utility {
 
 /**

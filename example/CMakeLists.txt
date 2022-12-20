@@ -23,6 +23,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fPIC -pipe -std=c++11 -fexception
 set(EXAMPLE_LIST
 	main
 	base
+	ecode
+	utility
 )
 
 set(BLUSEIO_LIB bluseio hv pthread OpenSSL::SSL OpenSSL::Crypto ${LIBRT})
