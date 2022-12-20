@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
+#include <bluseio/version.h>
 #include <bluseio/base/singleton.h>
 #include <bluseio/base/copyable.h>
 #include <bluseio/base/noncopyable.h>
@@ -32,6 +33,8 @@ class Cp2: public bluseio::base::copyable {
 };
 
 int main(void) {
+	std::cout << bluseio::version() << std::endl;
+	std::cout << bluseio::compile_time() << std::endl;
 	// singleton
 	Apple &app = bluseio::base::SingleTon<Apple>::GetInstance();
 	app.show();

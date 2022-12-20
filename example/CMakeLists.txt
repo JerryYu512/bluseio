@@ -6,7 +6,7 @@ project(example
 	LANGUAGES C CXX
 )
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 find_library(LIBRT rt)
 find_package(OpenSSL REQUIRED)
@@ -29,6 +29,7 @@ set(EXAMPLE_LIST
 
 set(BLUSEIO_LIB bluseio hv pthread OpenSSL::SSL OpenSSL::Crypto ${LIBRT})
 
+# file(MAKE_DIRECTORY output)
 foreach(src ${EXAMPLE_LIST})
 	string(REPLACE "-" ";" arr ${src})
 	list(GET arr -1 bin_name)

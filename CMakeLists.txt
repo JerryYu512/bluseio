@@ -150,7 +150,7 @@ message(STATUS "compile date:BLUSEIO_DATE_VERSION=${BLUSEIO_DATE_VERSION}")
 message(STATUS "compile uuid:BLUSEIO_UUID=${BLUSEIO_UUID}")
 
 # 生成配置
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configure.h.in ${CMAKE_CURRENT_SOURCE_DIR}/configure.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configure.h.in ${CMAKE_CURRENT_SOURCE_DIR}/bluseio/configure.h)
 
 set(INCDIR include)
 set(SRCDIR bluseio)
