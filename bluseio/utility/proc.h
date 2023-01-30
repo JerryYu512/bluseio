@@ -17,25 +17,32 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
- * @file main.cpp
+ * @file proc.h
  * @brief 
- * @author Jerry.Yu (jerry.yu512outlook.com)
+ * @author Jerry.Yu (astralrovers@outlook.com)
  * @version 1.0.0
- * @date 2022-09-18
+ * @date 2022-12-20
  * 
  * @copyright MIT License
  * 
  */
-#include <stdio.h>
-#include "bluseio/utility/log.h"
+#pragma once
 
-int main(void) {
-	bluseio::utility::Logger::default_logger().set_color_enable(true);
-	bluseio::utility::Logger::default_logger().set_file_enable(true);
-	blog_debug("hello world\n");
-	blog_info("hello world\n");
-	blog_warn("hello world\n");
-	blog_error("hello world\n");
-	blog_fatal("hello world\n");
-	return 0;
+namespace bluseio {
+namespace utility {
+
+/// @brief 当前进程信息
+class MyProcInfo {
+
+// TODO:
+// 1. 命令行参数
+// 2. 环境变量
+// 3. 进程名
+// 4. 程序所在路径
+// 5. 程序执行路径
+// 6. 程序id
+// 7. 检查是否已启动相同进程
+};
+
+}
 }

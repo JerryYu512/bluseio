@@ -17,25 +17,30 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
- * @file main.cpp
+ * @file base64.h
  * @brief 
- * @author Jerry.Yu (jerry.yu512outlook.com)
+ * @author Jerry.Yu (astralrovers@outlook.com)
  * @version 1.0.0
- * @date 2022-09-18
+ * @date 2022-12-25
  * 
  * @copyright MIT License
  * 
  */
-#include <stdio.h>
-#include "bluseio/utility/log.h"
+#pragma once
 
-int main(void) {
-	bluseio::utility::Logger::default_logger().set_color_enable(true);
-	bluseio::utility::Logger::default_logger().set_file_enable(true);
-	blog_debug("hello world\n");
-	blog_info("hello world\n");
-	blog_warn("hello world\n");
-	blog_error("hello world\n");
-	blog_fatal("hello world\n");
-	return 0;
-}
+namespace bluseio {
+namespace utility {
+	
+enum {BASE64_OK = 0, BASE64_INVALID};
+
+#define BASE64_ENCODE_OUT_SIZE(s)   (((s) + 2) / 3 * 4)
+#define BASE64_DECODE_OUT_SIZE(s)   (((s)) / 4 * 3)
+
+/// 编码
+int base64_encode(const unsigned char *in, unsigned int inlen, char *out);
+
+/// 解码
+int base64_decode(const char *in, unsigned int inlen, unsigned char *out);
+
+} // namespace utility
+} // namespace bluseio

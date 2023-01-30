@@ -17,25 +17,25 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
- * @file main.cpp
- * @brief 
- * @author Jerry.Yu (jerry.yu512outlook.com)
+ * @file global_var.h
+ * @brief 全局变量
+ * @author Jerry.Yu (astralrovers@outlook.com)
  * @version 1.0.0
- * @date 2022-09-18
+ * @date 2022-12-20
  * 
  * @copyright MIT License
  * 
  */
-#include <stdio.h>
-#include "bluseio/utility/log.h"
+#pragma once
+#include <stdint.h>
 
-int main(void) {
-	bluseio::utility::Logger::default_logger().set_color_enable(true);
-	bluseio::utility::Logger::default_logger().set_file_enable(true);
-	blog_debug("hello world\n");
-	blog_info("hello world\n");
-	blog_warn("hello world\n");
-	blog_error("hello world\n");
-	blog_fatal("hello world\n");
-	return 0;
+namespace bluseio {
+namespace utility {
+
+/// 全局变量定义
+#define GVAR_DEF(type, name, def_var, desc)
+/// 全局变量声明
+#define GVAR_DEC(type, name)
+
+}
 }

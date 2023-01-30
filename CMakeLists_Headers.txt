@@ -27,5 +27,6 @@ set(INCLUDE_HEADERS
 	bluseio/utility/slab.h
 	bluseio/utility/uuid.h
 	bluseio/utility/datetime.h
+	bluseio/utility/log.h
 	bluseio/tools/tabulate.hpp
 )

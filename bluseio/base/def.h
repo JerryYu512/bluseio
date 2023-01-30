@@ -302,3 +302,20 @@ ASCII:
 #define container_of(ptr, type, member) \
 ((type*)((char*)(ptr) - offsetof(type, member)))
 #endif
+
+/// 判断优化，都是判断为真的情况
+#if (defined(__GNUC__) && __GNUC__ >= 3) || defined(__clang__)
+#ifndef unlikely
+#define unlikely(x) __builtin_expect(!!(x), 0)
+#endif
+#ifndef likely
+#define likely(x) __builtin_expect(!!(x), 1)
+#endif
+#else
+#ifndef unlikely
+#define unlikely(x) (x)
+#endif
+#ifndef likely
+#define likely(x) (x)
+#endif
+#endif
