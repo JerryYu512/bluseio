@@ -15,6 +15,7 @@
 #include <bluseio/utility/slab.h>
 #include <bluseio/utility/uuid.h>
 #include <bluseio/utility/datetime.h>
+#include <bluseio/utility/json.h>
 #include <iostream>
 
 using namespace bluseio::utility;
@@ -127,6 +128,21 @@ int main(void) {
 		std::cout << "datetime - nowms: " << DateTime::now_ms() << std::endl;
 		std::cout << "datetime - nowsec: " << DateTime::now_sec() << std::endl;
 
+	}
+
+	{
+		Json null_json;
+		std::cout << null_json.format_str() << std::endl;
+
+		Json object_json(JSON_OBJECT);
+		object_json["key1"] = "1234";
+		object_json["key2"] = "1234";
+		object_json["key3"] = Json(JSON_OBJECT);
+		object_json["key4"] = true;
+		object_json["key5"] = 45;
+		object_json["key6"] = Json(JSON_ARRAY);
+
+		std::cout << object_json.format_str() << std::endl;
 	}
 	
 	return 0;

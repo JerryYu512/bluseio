@@ -284,7 +284,8 @@ int Logger::print(log_level_e lv, const char* tag, const char* filename, int lin
 		return -30;
 	}
 
-	if (LOG_LEVEL_SILENT == lv) {
+	// 非法的等级
+	if (LOG_LEVEL_SILENT == lv || LOG_LEVEL_VERBOSE == lv) {
 		return -40;
 	}
 
