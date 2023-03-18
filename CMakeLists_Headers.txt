@@ -30,5 +30,8 @@ set(INCLUDE_HEADERS
 	bluseio/utility/log.h
 	bluseio/utility/json.h
 	bluseio/utility/rbtree.h
+	bluseio/utility/spinlock.h
+	bluseio/utility/thread.h
+	bluseio/utility/threadpool.h
 	bluseio/tools/tabulate.hpp
 )
