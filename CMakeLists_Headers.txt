@@ -43,5 +43,9 @@ set(INCLUDE_HEADERS
 	bluseio/utility/thd/sha1.h
 	bluseio/utility/thd/circular_buffer.h
 	bluseio/utility/thd/html-entities.h
+	bluseio/utility/thd/tinyxml2.h
+	bluseio/utility/thd/httplib.h
+	bluseio/utility/thd/nlohmann/json.hpp
+	bluseio/utility/thd/nlohmann/json_fwd.hpp
 	bluseio/tools/tabulate.hpp
 )
