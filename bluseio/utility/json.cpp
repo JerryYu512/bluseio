@@ -56,6 +56,9 @@ Json::Json(JSON_TYPE type) {
 		case JSON_OBJECT:
 			m_value.m_object = new std::map<std::string, Json>;
 			break;
+		default:
+			m_type = JSON_NULL;
+			break;
 	}
 }
 
@@ -215,6 +218,8 @@ void Json::copy(const Json & other) {
 		case JSON_OBJECT:
 			m_value.m_object = new std::map<std::string, Json>(*other.m_value.m_object);
 			break;
+		default:
+			break;
 	}
 }
 
@@ -232,26 +237,23 @@ bool Json::operator == (const Json & other) {
 	if (m_type != other.m_type) {
 		return false;
 	}
-	switch (m_type)
-	{
-		switch (m_type) {
-			case JSON_NULL:
-				return true;
-			case JSON_BOOL:
-				return m_value.m_bool == other.m_value.m_bool;
-			case JSON_NUMBER:
-				return m_value.m_int == other.m_value.m_int;
-			case JSON_DOUBLE:
-				return m_value.m_double == other.m_value.m_double;
-			case JSON_STRING:
-				return m_value.m_string == other.m_value.m_string;
-			case JSON_ARRAY:
-				return m_value.m_array == other.m_value.m_array;
-			case JSON_OBJECT:
-				return m_value.m_object == other.m_value.m_object;
-			default:
-				return false;
-		}
+	switch (m_type) {
+		case JSON_NULL:
+			return true;
+		case JSON_BOOL:
+			return m_value.m_bool == other.m_value.m_bool;
+		case JSON_NUMBER:
+			return m_value.m_int == other.m_value.m_int;
+		case JSON_DOUBLE:
+			return m_value.m_double == other.m_value.m_double;
+		case JSON_STRING:
+			return m_value.m_string == other.m_value.m_string;
+		case JSON_ARRAY:
+			return m_value.m_array == other.m_value.m_array;
+		case JSON_OBJECT:
+			return m_value.m_object == other.m_value.m_object;
+		default:
+			return false;
 	}
 	return true;
 }
@@ -261,15 +263,15 @@ bool Json::operator != (const Json & other) {
 }
 
 Json & Json::operator [] (int index) {
-	if (JSON_ARRAY != m_type || index > (m_value.m_array->size() + 1))
-	{
-		throw std::logic_error("not array");
-	}
 	if (index < 0)
 	{
 		throw std::logic_error("index < 0");
 	}
-	if (index >= m_value.m_array->size())
+	if (JSON_ARRAY != m_type)
+	{
+		throw std::logic_error("not array");
+	}
+	if ((size_t)index >= m_value.m_array->size())
 	{
 		throw std::logic_error("index over size");
 	}
@@ -299,26 +301,23 @@ Json & Json::operator [] (const std::string & key) {
 }
 
 Json::operator bool() {
-	switch (m_type)
-	{
-		switch (m_type) {
-			case JSON_NULL:
-				return false;
-			case JSON_BOOL:
-				return m_value.m_bool;
-			case JSON_NUMBER:
-				return m_value.m_int;
-			case JSON_DOUBLE:
-				return m_value.m_double;
-			case JSON_STRING:
-				return m_value.m_string ? m_value.m_string->empty() : false;
-			case JSON_ARRAY:
-				return m_value.m_array ? m_value.m_array->empty() : false;
-			case JSON_OBJECT:
-				return m_value.m_object ? m_value.m_object->empty() : false;
-			default:
-				return false;
-		}
+	switch (m_type) {
+		case JSON_NULL:
+			return false;
+		case JSON_BOOL:
+			return m_value.m_bool;
+		case JSON_NUMBER:
+			return m_value.m_int;
+		case JSON_DOUBLE:
+			return m_value.m_double;
+		case JSON_STRING:
+			return m_value.m_string ? m_value.m_string->empty() : false;
+		case JSON_ARRAY:
+			return m_value.m_array ? m_value.m_array->empty() : false;
+		case JSON_OBJECT:
+			return m_value.m_object ? m_value.m_object->empty() : false;
+		default:
+			return false;
 	}
 	return false;
 }
@@ -458,8 +457,7 @@ void Json::reset_travsing(void) {
 std::string Json::format_str(bool format, int indent) const
 {
     std::stringstream ss;
-    switch (m_type)
-    {
+    switch (m_type) {
         case JSON_NULL:
             ss << "null";
             break;

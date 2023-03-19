@@ -74,6 +74,8 @@ macro(makeLink src dest dstpath)
 	# COMMAND ${CMAKE_COMMAND} -E copy_if_different ${src} ${dest}
 endmacro()
 
+file(REMOVE_RECURSE ${INC_DIR}/${PROJECT_NAME})
+
 foreach(header_file ${INCLUDE_HEADERS})
 	string(REPLACE "/" ";" arr ${header_file})
 	list (LENGTH arr length)
@@ -208,6 +210,7 @@ set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/module)
 set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio)
 set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/tools)
 set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/utility)
+set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/utility/thd)
 set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/ecode)
 set(PROJ_SRCDIRS ${PROJ_SRCDIRS} bluseio/base)
 

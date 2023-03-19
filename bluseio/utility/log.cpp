@@ -311,6 +311,7 @@ int Logger::print(log_level_e lv, const char* tag, const char* filename, int lin
 
     switch (lv) {
         LOG_LEVEL_MAP(XXX)
+		default:break;
     }
 #undef XXX
 
